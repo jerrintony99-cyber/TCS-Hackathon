@@ -1,0 +1,6 @@
+{
+  "name": "TestGen AI",
+  "description": "AI-powered QA test case generator transforming natural-language user stories into structured, actionable, and comprehensive test cases.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

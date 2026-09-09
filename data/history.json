@@ -1,0 +1,122 @@
+[
+  {
+    "id": "GEN-PY-EF160A9C",
+    "timestamp": "2026-09-09T10:00:40.462239Z",
+    "user_story": "As a banking customer, I want to transfer money between accounts with dual confirmation so that I prevent accidental transfers.",
+    "test_case_count": 3,
+    "coverage_score": 93,
+    "data": {
+      "id": "GEN-PY-EF160A9C",
+      "user_story": "As a banking customer, I want to transfer money between accounts with dual confirmation so that I prevent accidental transfers.",
+      "timestamp": "2026-09-09T10:00:40.462239Z",
+      "model_used": "gemini-2.5-flash (Python SDK)",
+      "provider_used": "Python 3 Native Engine",
+      "analysis": {
+        "summary": "Python QA Engine extracted actors, acceptance criteria, and positive/negative test matrix from: 'As a banking customer, I want to transfer money between accounts with dual confirmation so...'",
+        "actors": [
+          "End User",
+          "Target Subsystem",
+          "Database Service"
+        ],
+        "acceptance_criteria": [
+          "Primary user story objective executes with valid inputs",
+          "Input sanitization and boundary constraints are enforced",
+          "Failure modes return actionable feedback without leaking system trace"
+        ],
+        "assumptions": [
+          "Requirement assumes modern browser / TLS 1.3 encrypted communication.",
+          "Assumed standard enterprise database persistence with ACID compliance.",
+          "Assumed user session state is tracked via secure HTTP-only cookies or bearer JWT."
+        ],
+        "missing_information": [
+          "Exact rate-limiting threshold (e.g. requests/minute) is not specified in user story.",
+          "Specific localization / multi-currency requirements not declared.",
+          "Detailed session timeout duration (e.g. 15 min vs 30 min) not stated."
+        ]
+      },
+      "test_cases": [
+        {
+          "id": "TC001",
+          "title": "Verify successful primary happy path execution",
+          "user_story_ref": "REQ-01",
+          "preconditions": [
+            "System is online and user is in an active session",
+            "Prerequisites meet base criteria"
+          ],
+          "test_data": [
+            "Valid primary credentials / standard payload",
+            "Session token = valid"
+          ],
+          "steps": [
+            "1. Navigate to the primary interaction interface.",
+            "2. Enter valid required data parameters into input fields.",
+            "3. Submit the transaction or request.",
+            "4. Observe system feedback and confirmation."
+          ],
+          "expected_result": "Action completes successfully with status 200 OK. Confirmation message displayed and system state persists accurately.",
+          "priority": "High",
+          "test_type": "Functional",
+          "category": "Positive",
+          "status": "Ready"
+        },
+        {
+          "id": "TC002",
+          "title": "Validate system behavior when required fields are blank",
+          "user_story_ref": "REQ-01",
+          "preconditions": [
+            "Form / entry screen is displayed"
+          ],
+          "test_data": [
+            "All mandatory fields left blank / whitespace"
+          ],
+          "steps": [
+            "1. Access the target form.",
+            "2. Leave all required fields empty.",
+            "3. Click or trigger the submission action.",
+            "4. Verify client and server validation responses."
+          ],
+          "expected_result": "Submission is blocked. Field-level inline validation banners trigger with clear error descriptions. No network mutation occurs.",
+          "priority": "High",
+          "test_type": "Negative",
+          "category": "Negative",
+          "status": "Ready"
+        },
+        {
+          "id": "TC003",
+          "title": "Verify boundary limits (max length string and single-character input)",
+          "user_story_ref": "REQ-01",
+          "preconditions": [
+            "User is on input form"
+          ],
+          "test_data": [
+            "Exact upper boundary limit (e.g. 255 chars)",
+            "Minimum threshold input (1 char)"
+          ],
+          "steps": [
+            "1. Enter maximum allowed boundary length in target inputs.",
+            "2. Submit the form and verify data truncation handling.",
+            "3. Repeat with minimum valid input threshold.",
+            "4. Verify database persistence preserves exact boundary length."
+          ],
+          "expected_result": "System cleanly processes boundary values without UI overflow, server 500 crashes, or unintended character truncation.",
+          "priority": "Medium",
+          "test_type": "Edge Case",
+          "category": "Positive",
+          "status": "Ready"
+        }
+      ],
+      "coverage": {
+        "total": 3,
+        "positive": 2,
+        "negative": 3,
+        "edge_cases": 1,
+        "security": 1,
+        "performance": 1,
+        "high_priority": 3,
+        "medium_priority": 2,
+        "low_priority": 0,
+        "overall_score": 93
+      }
+    }
+  }
+]
